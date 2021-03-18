@@ -5,7 +5,7 @@
 #include "Tictactoe.h"
 
 
-    Tictactoe::Tictactoe(){
+    Tictactoe::Tictactoe(): symboleCourant('x'), numeroTour(0){
 }
 
     void Tictactoe::afficheGrille(){
@@ -46,7 +46,7 @@
     }
 
     bool Tictactoe::testeJeuNul(){
-        if(numeroTour == 9){
+        if(numeroTour == 8){
             std:: cout << "Match Nul" << std:: endl;
             return true;
         }

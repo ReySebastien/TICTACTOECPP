@@ -2,6 +2,7 @@
 #include "Tictactoe.cpp"
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 
 
 int main(){
@@ -20,5 +21,7 @@ int main(){
         jeu.finTour();
 
     }
+
+    system("pause");
     return 0;
 }
