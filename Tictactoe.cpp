@@ -47,9 +47,10 @@
 
     bool Tictactoe::testeJeuNul(){
         if(numeroTour == 9){
+            std:: cout << "Match Nul" << std:: endl;
             return true;
         }
-
+        return false;
     }
 
     void Tictactoe::finTour(){

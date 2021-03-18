@@ -11,16 +11,14 @@ int main(){
     int numeroCase;
 
 
-    while(!partiegagnee || jeu.testeJeuNul()){
+    while(!partiegagnee){
         
         jeu.afficheGrille();
         std::cin >> numeroCase;
         jeu.ajouteSymbole(numeroCase%3,numeroCase/3);
-        partiegagnee = jeu.testeVictoireDiagonale() || jeu.testeVictoireHorizontale() || jeu.testeVictoireVerticale();
+        partiegagnee = jeu.testeVictoireDiagonale() || jeu.testeVictoireHorizontale() || jeu.testeVictoireVerticale() || jeu.testeJeuNul();
         jeu.finTour();
-    }
 
-    
-    
+    }
     return 0;
 }
