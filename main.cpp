@@ -2,7 +2,6 @@
 #include "Tictactoe.cpp"
 #include <iostream>
 #include <string>
-#include <stdlib.h>
 
 
 int main(){
@@ -11,17 +10,14 @@ int main(){
     Tictactoe jeu = Tictactoe();
     int numeroCase;
 
-
-    while(!partiegagnee){
+    while(!partiegagnee && !jeu.testeJeuNul()){
         
         jeu.afficheGrille();
         std::cin >> numeroCase;
         jeu.ajouteSymbole(numeroCase%3,numeroCase/3);
-        partiegagnee = jeu.testeVictoireDiagonale() || jeu.testeVictoireHorizontale() || jeu.testeVictoireVerticale() || jeu.testeJeuNul();
+        partiegagnee = jeu.testeVictoireDiagonale() || jeu.testeVictoireHorizontale() || jeu.testeVictoireVerticale();
         jeu.finTour();
-
     }
-
-    system("pause");
+    
     return 0;
 }

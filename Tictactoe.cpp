@@ -3,64 +3,58 @@
 
 #include "Grille.h"
 #include "Tictactoe.h"
+#include <iostream>
 
 
-    Tictactoe::Tictactoe(): symboleCourant('x'), numeroTour(0){
-}
+    Tictactoe::Tictactoe(): _symboleCourant('X') {}
 
     void Tictactoe::afficheGrille(){
-       grilleDeJeu.affiche();
-       std::cout << std::endl;
+        _grilleDeJeu.affiche();
     }
 
     void Tictactoe::ajouteSymbole(int x, int y){
-        grilleDeJeu.setContent(x, y, symboleCourant);
-
+        _grilleDeJeu.setContent(x,y,_symboleCourant);
     }
 
     bool Tictactoe::testeVictoireVerticale(){
-        for(int i=0; i<3; i++){
-            if(grilleDeJeu.getContent(i,0) != ' ' && grilleDeJeu.getContent(i,0) == grilleDeJeu.getContent(i,1) && grilleDeJeu.getContent(i,0) == grilleDeJeu.getContent(i,2)){
-                std::cout << "Gagné" << std::endl; 
-                return true;
-            }
-        }
-    }
-
-    bool Tictactoe::testeVictoireHorizontale(){
-        for(int i=0; i<3; i++){
-            if(grilleDeJeu.getContent(0,i) != ' ' && grilleDeJeu.getContent(0,i) == grilleDeJeu.getContent(1,i ) && grilleDeJeu.getContent(0,i) == grilleDeJeu.getContent(2,i)){
-                std::cout << "Gagné" << std::endl; 
-                return true;
-            }
-        }
-    }
-
-    bool Tictactoe::testeVictoireDiagonale(){
-        for(int i=0; i<3; i++){
-            if(grilleDeJeu.getContent(i,i) != ' ' && grilleDeJeu.getContent(0,0) == grilleDeJeu.getContent(1,1) && grilleDeJeu.getContent(0,0) == grilleDeJeu.getContent(2,2)){
-                std::cout << "Gagné" << std::endl; 
-                return true;
-            }
-        }
-    }
-
-    bool Tictactoe::testeJeuNul(){
-        if(numeroTour == 8){
-            std:: cout << "Match Nul" << std:: endl;
-            return true;
+        for(int i=0;i<2;i++){
+            if(_grilleDeJeu.getContent(0,i)==_grilleDeJeu.getContent(1,i)
+            && _grilleDeJeu.getContent(0,i)==_grilleDeJeu.getContent(2,i)
+            && _grilleDeJeu.getContent(0,i)!=' ')
+            {return true;}
         }
         return false;
     }
 
+    bool Tictactoe::testeVictoireHorizontale(){
+        for(int i=0;i<2;i++){
+            if(_grilleDeJeu.getContent(i,0)==_grilleDeJeu.getContent(i,1)
+            && _grilleDeJeu.getContent(i,0)==_grilleDeJeu.getContent(i,2)
+            && _grilleDeJeu.getContent(i,0)!=' ')
+            {return true;}
+        }
+        return false;   
+    }
+
+    bool Tictactoe::testeVictoireDiagonale(){
+        if(_grilleDeJeu.getContent(0,0)==_grilleDeJeu.getContent(1,1)
+            && _grilleDeJeu.getContent(0,0)==_grilleDeJeu.getContent(2,2)
+            && _grilleDeJeu.getContent(0,0)!=' ')
+            {return true;}
+        if(_grilleDeJeu.getContent(2,0)==_grilleDeJeu.getContent(1,1)
+            && _grilleDeJeu.getContent(2,0)==_grilleDeJeu.getContent(0,2)
+            && _grilleDeJeu.getContent(2,0)!=' ')
+            {return true;}
+        return false;
+    }
+
+    bool Tictactoe::testeJeuNul(){
+        return _numeroTour==10;
+        }
+
     void Tictactoe::finTour(){
-        numeroTour++;
-        if(symboleCourant =='x'){
-            symboleCourant = 'o';
-        }
-        else{
-            symboleCourant = 'x';
-        }
-        }
+        _symboleCourant=='X'?_symboleCourant='O':_symboleCourant='X';
+        _numeroTour++;
+   }
 
 #endif
